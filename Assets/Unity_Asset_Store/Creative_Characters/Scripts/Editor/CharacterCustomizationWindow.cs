@@ -109,7 +109,7 @@ namespace CharacterCustomizationTool.Editor
 
             FaceLoader.AddFaces(character);
             AddAnimator(character);
-            AddMovementComponents(character);
+            // AddMovementComponents(character);
 
             var prefabPath = AssetsPath.SavedCharacters + _prefabPath;
             Directory.CreateDirectory(prefabPath);
@@ -126,12 +126,12 @@ namespace CharacterCustomizationTool.Editor
             animator.applyRootMotion = false;
         }
 
-        private static void AddMovementComponents(GameObject character)
-        {
-            AddCharacterController(character);
-            character.AddComponent<CharacterMover>();
-            character.AddComponent<MovePlayerInput>();
-        }
+        // private static void AddMovementComponents(GameObject character)
+        // {
+        //     AddCharacterController(character);
+        //     character.AddComponent<CharacterMover>();
+        //     character.AddComponent<MovePlayerInput>();
+        // }
 
         private static void AddCharacterController(GameObject character)
         {
