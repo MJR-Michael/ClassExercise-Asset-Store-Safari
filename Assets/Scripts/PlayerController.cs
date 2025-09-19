@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
-public class VehicleController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveForce = 1500f;
@@ -21,8 +21,6 @@ public class VehicleController : MonoBehaviour
     private bool reverseInput;
     private Rigidbody rb;
     private bool isGrounded;
-    private int score = 0;
-    public TMP_Text scoreText;
 
     private void Awake()
     {
@@ -118,32 +116,12 @@ public class VehicleController : MonoBehaviour
         }
     }
 
-
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Collectible"))
-        {
-            score++;
-            UpdateScoreUI();
-            Debug.Log("Coin collected! Score: " + score);
-            Destroy(other.gameObject);
-        }
-    }
-
-    private void UpdateScoreUI()
-    {
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score;
         }
     }
 }
